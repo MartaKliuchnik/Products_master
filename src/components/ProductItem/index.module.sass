@@ -1,0 +1,29 @@
+.card_container
+    height: 350px
+    // width: 200px
+    cursor: pointer
+    display: flex
+    flex-direction: column
+    border: 2px solid transparent
+    &:hover
+        border: 2px solid black
+    &>.photo_card
+        display: block
+        margin: 0 auto
+        width: 200px
+        height: 200px
+        margin-bottom: 20px
+        &>img
+            width: 100%
+            height: 100%
+            object-fit: container
+    &>.product_price
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom: 10px
+        &>.heart
+            bottom: 0
+            right: 5px
+            color: red
+            cursor: pointer
