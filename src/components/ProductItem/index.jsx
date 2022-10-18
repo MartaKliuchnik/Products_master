@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './index.module.sass';
-import { HeartOutlined } from '@ant-design/icons';
+import { HeartFilled } from '@ant-design/icons';
+import Button from '../UI/Button';
 
 
 export default function ProductItem({ title, price, description, image}) {
@@ -14,10 +15,13 @@ export default function ProductItem({ title, price, description, image}) {
             </div>
             <div className={s.product_price}>
                 <p style={{ fontWeight: 900 }}>€{price}</p>
-                <HeartOutlined className={s.heart} />
+                <HeartFilled className={s.heart} />
             </div>
             <p style={{fontWeight: 900}}>{title}</p>
             {/* <p>{description}</p> */}
+            <div className={s.btn_container}>
+                <Button>Добавить в корзину</Button>
+            </div>
         </div>
     )
 }

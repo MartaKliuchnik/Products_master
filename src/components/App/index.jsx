@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import {Context} from '../../context'
-import {requests_product} from '../../requests/products'
-import ProductsContainer from '../ProductsContainer';
+import BasketProducts from '../../pages/BasketProducts';
+import { requests_product } from '../../requests/products';
+import ListProducts from '../../pages/ListProducts';
+import {Routes, Route} from 'react-router-dom'
+import NavMenu from '../NavMenu';
 
 function App() {
 
@@ -12,8 +15,14 @@ function App() {
   }, [])
 
   return (
-    <Context.Provider value={{products}}>
-      <ProductsContainer/>
+    <Context.Provider value={{ products }}>
+      <NavMenu />
+      
+      <Routes>
+        <Route path='/list_products' element={<ListProducts />}/>
+        <Route path='/basket_products' element={<BasketProducts />}/>
+      </Routes>
+      
     </Context.Provider>
   );
 }
