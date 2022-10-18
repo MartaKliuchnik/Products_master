@@ -2,11 +2,13 @@ import React from 'react';
 import s from './index.module.sass';
 import { HeartFilled } from '@ant-design/icons';
 import Button from '../UI/Button';
+import { useContext } from 'react';
+import {Context} from '../../context'
 
 
-export default function ProductItem({ title, price, description, image}) {
+export default function ProductItem({ id, title, price, description, image}) {
     
-    // console.log(rating)
+    const { addToBasket } = useContext(Context);
 
     return (
         <div className={s.card_container}>
@@ -20,7 +22,7 @@ export default function ProductItem({ title, price, description, image}) {
             <p style={{fontWeight: 900}}>{title}</p>
             {/* <p>{description}</p> */}
             <div className={s.btn_container}>
-                <Button>Добавить в корзину</Button>
+                <Button onClick={() => addToBasket(id)}>Добавить в корзину</Button>
             </div>
         </div>
     )

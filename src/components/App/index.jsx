@@ -11,11 +11,20 @@ function App() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    requests_product(setProducts)
-  }, [])
+    products.map(product => product.basket = false);
+    requests_product(setProducts);
+  }, []);
+
+  const addToBasket = (id) => {
+    products.map(product => (product.id === id)
+      ? product.basket = true
+      : product.basket);
+    console.log(products);
+    return setProducts([...products]);
+  }
 
   return (
-    <Context.Provider value={{ products }}>
+    <Context.Provider value={{ products, addToBasket }}>
       <NavMenu />
       
       <Routes>
