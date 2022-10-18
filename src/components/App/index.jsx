@@ -8,10 +8,9 @@ import NavMenu from '../NavMenu';
 
 function App() {
 
-  const [products, setProducts] = useState([]);
+  let [products, setProducts] = useState([]);
 
   useEffect(() => {
-    products.map(product => product.basket = false);
     requests_product(setProducts);
   }, []);
 
@@ -19,12 +18,28 @@ function App() {
     products.map(product => (product.id === id)
       ? product.basket = true
       : product.basket);
-    console.log(products);
+    return setProducts([...products]);
+  }
+
+  // const incrementCount = (id) => {
+  //   console.log(id)
+  //   products.map(product => (product.id === id)
+  //     ? product.count = 1
+  //     : '')
+  //   console.log(products)
+  //   return setProducts([...products]);
+    
+  // }
+  
+  const deleteProductInBasket = (id) => {
+    products.map(product => product.id === id
+      ? product.basket = false
+      : ' ')
     return setProducts([...products]);
   }
 
   return (
-    <Context.Provider value={{ products, addToBasket }}>
+    <Context.Provider value={{ products, addToBasket, deleteProductInBasket }}>
       <NavMenu />
       
       <Routes>
