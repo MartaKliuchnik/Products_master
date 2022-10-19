@@ -8,10 +8,10 @@ import {Context} from '../../context'
 
 export default function ProductItem({ id, title, price, image, wish}) {
     
-    const { addToBasket, addToWishList } = useContext(Context);
+    const { addToBasket, addToWishList, delete_product } = useContext(Context);
 
     return (
-        <div className={s.card_container}>
+        <div className={s.card_container} onDoubleClick={() => delete_product(id)}>
             <div className={s.photo_card}>
                 <img src={image} alt="photo_product" />
             </div>

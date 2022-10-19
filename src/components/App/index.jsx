@@ -77,8 +77,7 @@ function App() {
       target.wish = !target.wish
       setProducts([...products])
     }
-    // setProducts([...products])
-  }
+}
 
   const delete_wish = (id) => {
     const target = products.find(product => product.id === id);
@@ -88,9 +87,13 @@ function App() {
     setProducts([...products])
   }
 
+  const delete_product = (id) => {
+    setProducts(products.filter(prev => prev.id !== id))
+  };
+
   return (
     <Context.Provider
-      value={{ orders, products, addToBasket, deleteProductInBasket, incrementCount, decrementCount, addToWishList, delete_wish }}>
+      value={{ orders, products, addToBasket, deleteProductInBasket, incrementCount, decrementCount, addToWishList, delete_wish, delete_product }}>
       <NavMenu />
       
       <Routes>
