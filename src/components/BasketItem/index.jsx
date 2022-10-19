@@ -26,7 +26,7 @@ export default function BasketItem({ id, title, price, image, basket, count }) {
                         <ButtonDelete onClick={() => deleteProductInBasket(id)}>Удалить</ButtonDelete>
                     </div>
                 </div>
-                <p style={{ fontSize: 25, fontWeight: 700 }}>{price} €</p>
+                <p style={{ fontSize: 25, fontWeight: 700 }}>{(price * count).toFixed(2)} €</p>
             </div>
             : ' '
             }

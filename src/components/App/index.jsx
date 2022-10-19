@@ -33,26 +33,21 @@ function App() {
       ? ++order.count
       : ''
     )
-    setProducts([...orders])
+    setOrders([...orders])
   }
   
   const decrementCount = (id) => {
     const target = orders.find(order => order.id === id);
-    console.log(target.count)
     if (target.count > 1) {
       target.count--
     } else {
       target.count = 0
     }
-    setProducts([...orders])
+    setOrders([...orders])
   }
   
-  const deleteProductInBasket = (id) => {
-    products.map(product => product.id === id
-      ? product.basket = false
-      : ' ')
-    return setProducts([...products]);
-  }
+  const deleteProductInBasket = (id) => setOrders(orders.filter(order => order.id !== id));
+  
 
   return (
     <Context.Provider
