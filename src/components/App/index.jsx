@@ -16,6 +16,15 @@ function App() {
     requests_product(setProducts);
   }, []);
 
+  useEffect(() => {
+    const data = localStorage.getItem('orders');
+    setOrders(JSON.parse(data))
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('orders', JSON.stringify(orders))
+  }, [orders])
+
     const addToBasket = (id, title, price, image) => setOrders([...orders,
         {
           id,
