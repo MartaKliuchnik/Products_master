@@ -6,12 +6,12 @@ import s from './index.module.sass';
 
 export default function BasketContainer() {
 
-    const { products } = useContext(Context);
+    const { orders } = useContext(Context);
 
     return (
         <div className={['wrapper', s.basket_container].join(' ')}>
             {
-                products.map(product => <BasketItem key={product.id} {...product} />)
+                orders.map(order => <BasketItem key={order.id} {...order} />)
             }
         </div>
     )

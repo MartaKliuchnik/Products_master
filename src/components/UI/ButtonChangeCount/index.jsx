@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './index.module.sass';
 
-export default function ButtonChangeCount({children}) {
+export default function ButtonChangeCount({children, ...props}) {
     return (
-        <button className={s.btn}>{children}</button>
+        <button {...props} className={s.btn}>{children}</button>
     )
 }

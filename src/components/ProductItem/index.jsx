@@ -22,7 +22,7 @@ export default function ProductItem({ id, title, price, description, image}) {
             <p style={{fontWeight: 900}}>{title}</p>
             {/* <p>{description}</p> */}
             <div className={s.btn_container}>
-                <Button onClick={() => addToBasket(id)}>Добавить в корзину</Button>
+                <Button onClick={() => addToBasket(id, title, price, image)}>Добавить в корзину</Button>
             </div>
         </div>
     )

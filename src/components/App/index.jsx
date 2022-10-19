@@ -8,28 +8,44 @@ import NavMenu from '../NavMenu';
 
 function App() {
 
-  let [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     requests_product(setProducts);
   }, []);
 
-  const addToBasket = (id) => {
-    products.map(product => (product.id === id)
-      ? product.basket = true
-      : product.basket);
-    return setProducts([...products]);
-  }
+    const addToBasket = (id, title, price, image) => setOrders([...orders,
+        {
+          id,
+          title,
+          price,
+          image,
+          count: 1,
+          basket: true
+        }
+      ])
+  
 
-  // const incrementCount = (id) => {
-  //   console.log(id)
-  //   products.map(product => (product.id === id)
-  //     ? product.count = 1
-  //     : '')
-  //   console.log(products)
-  //   return setProducts([...products]);
-    
-  // }
+  const incrementCount = (id) => {
+    orders.map(order => order.id === id
+      ? ++order.count
+      : ''
+    )
+    setProducts([...orders])
+  }
+  
+  const decrementCount = (id) => {
+    const target = orders.find(order => order.id === id);
+    console.log(target.count)
+    if (target.count > 1) {
+      target.count--
+    } else {
+      target.count = 0
+    }
+    setProducts([...orders])
+  }
   
   const deleteProductInBasket = (id) => {
     products.map(product => product.id === id
@@ -39,7 +55,8 @@ function App() {
   }
 
   return (
-    <Context.Provider value={{ products, addToBasket, deleteProductInBasket }}>
+    <Context.Provider
+      value={{ orders, products, addToBasket, deleteProductInBasket, incrementCount, decrementCount }}>
       <NavMenu />
       
       <Routes>

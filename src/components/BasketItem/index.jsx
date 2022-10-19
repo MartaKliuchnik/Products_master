@@ -6,7 +6,7 @@ import ButtonDelete from '../UI/ButtonDelete';
 
 export default function BasketItem({ id, title, price, image, basket, count }) {
     
-    const { deleteProductInBasket } = useContext(Context);
+    const { deleteProductInBasket, incrementCount, decrementCount } = useContext(Context);
 
     return (
         <div>
@@ -18,7 +18,9 @@ export default function BasketItem({ id, title, price, image, basket, count }) {
                 <p style={{width: 400}}>{title}</p>
                 <div className={s.container_change_count}>
                     <div className={s.container_count}>
-                        <ButtonChangeCount>-</ButtonChangeCount>{count}<ButtonChangeCount>+</ButtonChangeCount>        
+                        <ButtonChangeCount onClick={() => decrementCount(id)}>-</ButtonChangeCount>
+                            {count}
+                        <ButtonChangeCount onClick={() => incrementCount(id)}>+</ButtonChangeCount>        
                     </div>   
                     <div className={s.btn_delete}>
                         <ButtonDelete onClick={() => deleteProductInBasket(id)}>Удалить</ButtonDelete>
