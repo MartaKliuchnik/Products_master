@@ -7,11 +7,16 @@ import s from './index.module.sass'
 export default function WishList() {
 
     const { products } = useContext(Context);
-    
+
+    const new_array = products.map(product => product.wish === true)
+    console.log(new_array)
+    const target = new_array.find(array => array === true)
+    console.log(target)
+
     return (
         <div className={['wrapper', s.wish_container].join(' ')}>
             {
-                (products.map(product => product.wish === undefined ))
+                target === undefined
                     ? <EmptyWish />
                     : products.map(product => <WishItem key={product.id} {...product} />)
             }

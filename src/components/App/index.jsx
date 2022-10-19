@@ -11,11 +11,11 @@ function App() {
 
   const [products, setProducts] = useState([]);
 
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
+    useEffect(() => {
     requests_product(setProducts);
-  }, []);
+    }, []);
+
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const data = localStorage.getItem('orders');
@@ -67,15 +67,17 @@ function App() {
   
   const addToWishList = (id) => {
     const target = products.find(product => product.id === id);
-    console.log(target.wish)
     if (target.wish === undefined) {
       target.wish = true
+      setProducts([...products])
     } else if (target.wish) {
       target.wish = !target.wish
+      setProducts([...products])
     } else if (!target.wish) {
       target.wish = !target.wish
+      setProducts([...products])
     }
-    setProducts([...products])
+    // setProducts([...products])
   }
 
   const delete_wish = (id) => {

@@ -12,7 +12,7 @@ export default function WishItem({ id, title, price, description, image, wish })
     
     return (
         !wish
-            ? ''
+            ? ' '
             : <div className={s.wish_container}>
                 <div className={s.close} onClick={() => delete_wish(id)}>
                     <CloseCircleFilled  />
