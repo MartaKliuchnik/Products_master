@@ -3,7 +3,7 @@ import {Context} from '../../context'
 import BasketProducts from '../../pages/BasketProducts';
 import { requests_product } from '../../requests/products';
 import ListProducts from '../../pages/ListProducts';
-import {Routes, Route} from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import NavMenu from '../NavMenu';
 import WishLists from '../../pages/WishLists';
 
